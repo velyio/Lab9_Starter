@@ -136,7 +136,11 @@
       console.groupEnd('Group Demo');
     });
     errorBtns[10].addEventListener('click', () => {
-      console.table('Console Table');
+      const sampleData = [
+        { name: 'Alice', age: 25 },
+        { name: 'Bob', age: 30 }
+      ];
+      console.table(sampleData);
     });
     errorBtns[11].addEventListener('click', () => {
       console.time('Timer Demo');
@@ -147,7 +151,44 @@
     errorBtns[13].addEventListener('click', () => {
       console.trace('Console Trace Button Clicked');
     });
-    // Don't trigger global error for 14
+    
+    errorBtns[14].addEventListener('click', () => {
+      try {
+        throw new Error('This will trigger a global error');
+      } catch (e) {
+        console.error('Caught error:', e.message);
+      } finally {
+        console.log('Finally block executed');
+      }
+    });
+    errorBtns[15].addEventListener('click', () => {
+      try {
+        let number = document.querySelector('#first-num').value;
+        if (isNaN(number)) {
+          throw new TypeError('Expected a number input!');
+        }
+      } catch (e) {
+        console.error('Try/Catch Example:', e);
+      } finally {
+        console.log('Completed demonstration.');
+      }
+    });
+
+    class InputMissingError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = 'InputMissingError';
+      }
+    }
+
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+      console.log('Global Error Caught:');
+      console.log('Message:', msg);
+      console.log('URL:', url);
+      console.log('Line:', lineNo, 'Column:', columnNo);
+      console.log('Error Object:', error);
+      return true;
+    };
   </script>
 </body>
 
