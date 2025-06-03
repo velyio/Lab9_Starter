@@ -153,13 +153,7 @@
     });
     
     errorBtns[14].addEventListener('click', () => {
-      try {
-        throw new Error('This will trigger a global error');
-      } catch (e) {
-        console.error('Caught error:', e.message);
-      } finally {
-        console.log('Finally block executed');
-      }
+      noFunctionCall(); // global error
     });
     errorBtns[15].addEventListener('click', () => {
       try {
