@@ -2,6 +2,6 @@
 
 Angel Cortez Gutierrez
 
-[https://velyio.github.io/Lab9_Starter/](Lab 9 Site Link)
+[Lab 9 Site Link](https://velyio.github.io/Lab9_Starter/)
 
 ![Error Screenshot](errors.png)
