@@ -87,7 +87,16 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "5bdbfab0197b4dc5bbffe6946a3eb0ea"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+
+  <script>
+    TrackJS.track('Testing TrackJS!'); // step 5
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -137,8 +146,8 @@
     });
     errorBtns[10].addEventListener('click', () => {
       const sampleData = [
-        { name: 'Alice', age: 25 },
-        { name: 'Bob', age: 30 }
+        { name: 'example', age: 1 },
+        { name: 'exmaple 2', age: 2 }
       ];
       console.table(sampleData);
     });
@@ -152,14 +161,17 @@
       console.trace('Console Trace Button Clicked');
     });
     
+    //global error
     errorBtns[14].addEventListener('click', () => {
-      noFunctionCall(); // global error
+      noFunctionCall();
     });
+
+    //custom error
     errorBtns[15].addEventListener('click', () => {
       try {
         let number = document.querySelector('#first-num').value;
         if (isNaN(number)) {
-          throw new TypeError('Expected a number input!');
+          throw new TypeError('Wrong input type');
         }
       } catch (e) {
         console.error('Try/Catch Example:', e);
